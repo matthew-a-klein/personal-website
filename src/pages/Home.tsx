@@ -1,24 +1,51 @@
 import Base from "../components/Base";
+import Main from "../components/Main";
+import About from "../components/About";
+import Contact from "../components/Contact";
+import { useState, useEffect } from "react";
+
 const Home = () => {
+  const [next, setNext] = useState(1);
+  const height = window.innerHeight;
+
+  const goNext = () => {
+    // Calculate the target position based on the next section
+    const targetPosition = next * height;
+
+    // Scroll to the calculated position
+    window.scrollTo({
+      behavior: "smooth", // Add smooth scrolling behavior
+      top: targetPosition,
+    });
+  };
+
+  const arrowClickHandler = () => {
+    setNext((prev) => prev + 1);
+    goNext();
+  };
+
+  // Listen to scroll events and update the "next" screen accordingly
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.scrollY;
+      const newNext = Math.floor(currentPosition / height) + 1;
+      setNext(newNext);
+    };
+
+    // Add the scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [height]);
+
   return (
     <Base>
-      <div className="text-7xl mt-16 lg:text-5xl lg:ml-32 lg:mt-48 ">
-        Hello there! I'm Matthew.
-      </div>
-      <div className=" text-6xl mt-4 lg:mt-6 lg:text-5xl lg:ml-32">
-        I'm a software developer.
-      </div>
-      <div className="text-4xl mt-16 lg:ml-32">
-        I'm currently studying computer science at King's College, London.
-      </div>
-      <div className="text-4xl lg:ml-32">
-        Check out my portfolio on{" "}
-        <a href="https://github.com/matthew-a-klein">github</a>.
-      </div>
-      <div className="text-4xl mt-8 lg:ml-32">
-        I am interested in web and app development, compilers and machine
-        learning.
-      </div>
+      <Main arrowClickHandler={arrowClickHandler} />
+      <About arrowClickHandler={arrowClickHandler} />
+      <Contact arrowClickHandler={arrowClickHandler} />
     </Base>
   );
 };
