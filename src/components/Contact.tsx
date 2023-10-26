@@ -1,3 +1,4 @@
+import ContactForm from "./ContactForm";
 import HomeComponent from "./HomeComponent";
 export interface ExportInterface {
   arrowClickHandler: () => void;
@@ -5,7 +6,10 @@ export interface ExportInterface {
 const Contact = ({ arrowClickHandler }: ExportInterface) => {
   return (
     <HomeComponent arrowClickHandler={arrowClickHandler} isLastScreen={true}>
-      Contact
+      <div className="mt-8 text-3xl font-semibold flex justify-center">
+        Contact Me!
+      </div>
+      <ContactForm />
     </HomeComponent>
   );
 };
