@@ -1,8 +1,8 @@
 version: "3.8"
 
 services:
-  app:
-    container_name: app
+  personal-site-frontend:
+    container_name: personal-site-frontend
     build:
       context: .
     ports:

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const submitForm = (fromEmail: String, fromName: String, message: String) => {
   axios
-    .post("http://localhost:8000/api/email/", {
+    .post("api/email/", {
       from_email: fromEmail,
       from_name: fromName,
       message: message,
