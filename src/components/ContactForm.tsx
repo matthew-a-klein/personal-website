@@ -40,7 +40,10 @@ const ContactForm = () => {
 
   return (
     <div>
-      <form className="mx-auto max-w-xl sm:mt-20" onSubmit={handleSubmit}>
+      <form
+        className=" mx-5 lg:mx-auto max-w-xl sm:mt-20"
+        onSubmit={handleSubmit}
+      >
         <div>
           <label
             htmlFor="first-name"
