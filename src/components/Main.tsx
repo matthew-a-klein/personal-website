@@ -30,6 +30,17 @@ const Main = ({ arrowClickHandler }: MainInterface) => {
           I am interested in web and app development, compilers and machine
           learning.
         </div>
+        <div className="text-xl lg:ml-32">
+          Click{" "}
+          <a
+            className="underline underline-offset-4"
+            href="/resume"
+            target="_blank" 
+          >
+            here
+          </a>
+          {" "}for my resume.
+        </div>
       </div>
     </HomeComponent>
   );
