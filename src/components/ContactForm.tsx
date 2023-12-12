@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import submitForm from "../api_requests/submitForm";
+import  { Dispatch, ChangeEvent, SetStateAction, FormEvent } from "react";
+
 
 interface FormData {
   name: string;
@@ -7,12 +7,14 @@ interface FormData {
   message: string;
 }
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
+export interface ContactFormProps{
+  formData: FormData, 
+  setFormData: Dispatch<SetStateAction<FormData>>
+  handleSubmit: ()=>void
+  verified : boolean
+}
+
+const ContactForm = ({verified, handleSubmit, formData, setFormData}: ContactFormProps) => {
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,25 +26,18 @@ const ContactForm = () => {
     });
   };
 
-  const clearForm = () => {
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  };
+  const submitForm = (event: FormEvent)=>{
+    event.preventDefault()
+    handleSubmit()
+  }
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    clearForm();
-    submitForm(formData.email, formData.name, formData.message);
-  };
+ 
 
   return (
     <div>
       <form
-        className=" mx-5 lg:mx-auto max-w-xl sm:mt-20"
-        onSubmit={handleSubmit}
+        className="mt-20 lg:mt-5 mx-auto max-w-xl "
+        onSubmit={submitForm}
       >
         <div>
           <label
@@ -102,7 +97,8 @@ const ContactForm = () => {
         </div>
         <div className="mt-6 flex justify-center">
           <button
-            className="px-4 py-2 rounded-lg text-md bg-white text-slate-900"
+            className={`px-4 py-2 rounded-lg text-md bg-white text-slate-900 ${verified? "": "opacity-50" }`}
+            disabled={!verified}
             type="submit"
           >
             Submit
