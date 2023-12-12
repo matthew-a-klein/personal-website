@@ -18,7 +18,7 @@ const About = ({ arrowClickHandler }: AboutInterface) => {
       </div>
       <div className=" mx-5 text-xl mt-16 lg:ml-32">
         {" "}
-        I have experience in full-stack web and app development compilers, and
+        I have experience in full-stack web and app development, compilers, and
         artificial intelligence.
       </div>
     </HomeComponent>
