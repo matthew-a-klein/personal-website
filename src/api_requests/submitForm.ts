@@ -13,7 +13,7 @@ const submitForm = (fromEmail: String, fromName: String, message: String, captch
       (result) => {
         console.log(result.data);
       },
-      (error) => { error(error)}
+      (error) => { console.error(error)}
     );
 };
 
