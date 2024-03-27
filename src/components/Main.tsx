@@ -16,18 +16,26 @@ const Main = ({ arrowClickHandler }: MainInterface) => {
         <div className="text-xl mt-16 lg:ml-32">
           I'm currently studying computer science at King's College, London.
         </div>
-        <div className="text-xl lg:ml-32">
+        <div className="text-xl  lg:ml-32">
+          I'll be interning at {" "}<a
+            className="underline underline-offset-4"
+            href="https://nethermind.io"
+            target="_blank" 
+          >Nethermind</a>{" "}over summer 2024.
+        </div>
+        <div className="text-xl mt-16 lg:ml-32">
           Check out my portfolio on{" "}
           <a
             className="underline underline-offset-4"
             href="https://github.com/matthew-a-klein"
+            target="_blank" 
           >
             github
           </a>
           .
         </div>
         <div className="text-xl mt-8 lg:ml-32">
-          I am interested in web and app development, compilers and machine
+          I am interested in cryptography, compilers and machine
           learning.
         </div>
         <div className="text-xl lg:ml-32">
